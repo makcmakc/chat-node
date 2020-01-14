@@ -1,0 +1,78 @@
+<%- include('../layout/header.ejs')%>
+
+ <div class="main">
+        <div class="container">
+            <div class="content">
+              
+              <% for (var i = 0; i < posts.length; i++) { %>
+              <div class="post">
+                <div class="top">
+                  <h2>
+                    <a href="/posts/<%= posts[i].title %>"> <%= posts[i].title %></a>
+                   
+                  </h2>
+                </div>
+                <div class="body">
+                  <p><%= posts[i].body %></p>
+                </div>
+                <div class="bottom">
+                  <div class="author">
+                    Автор:
+                    <a href="/users/<%= posts[i].owner.login %>%>"><%= posts[i].owner.login %></a>
+                  </div>
+                  <a href="/">Комментарии</a>
+                </div>
+              </div>
+              <% } %>
+
+                <div class="pagination">
+                  <% if (current > 2) { %>
+                    <a class="new" href="/archive/<%= Number(current) - 1 %>">← К новым</a>
+                    <% } %>
+
+                      <% if (current == 2) { %>
+                        <a class="new" href="/">← На главную</a>
+                        <% } %>
+                        
+                          <% if (pages > 0 && current < pages) { %>
+                            <a class="old" href="/archive/<%= Number(current) + 1 %>">К старым →</a>
+                            <% } %>
+
+                </div>
+
+                <!--<div class="post">
+                   <div class="top">
+                       <h2>Заголовок поста</h2>
+                   </div>
+                   <div class="body">
+                       <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Парадигматическая безопасную образ подзаголовок! Вскоре прямо необходимыми текстами, о великий щеке рыбного от всех проектах свое родного, даль всемогущая деревни послушавшись.</p>
+                   </div>
+                   <div class="bottom">
+                       <div class="author">
+                           Автор: <a href="/">Гедеван</a>
+                       </div>
+                       <a href="/">Комментарии</a>
+                   </div>
+               </div>     
+                <div class="post">
+                   <div class="top">
+                       <h2>Заголовок поста</h2>
+                   </div>
+                   <div class="body">
+                       <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Парадигматическая безопасную образ подзаголовок! Вскоре прямо необходимыми текстами, о великий щеке рыбного от всех проектах свое родного, даль всемогущая деревни послушавшись.</p>
+                   </div>
+                   <div class="bottom">
+                       <div class="author">
+                           Автор: <a href="/">Гедеван</a>
+                       </div>
+                       <a href="/">Комментарии</a>
+                   </div>
+               </div>-->                      
+            </div>
+
+          <%- include('../layout/sidebar.ejs')%>
+
+        </div>
+    </div>
+
+<%- include('../layout/footer.ejs')%>
